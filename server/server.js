@@ -14,7 +14,6 @@ const corsOptions = {
     'http://localhost:3000',
     'http://localhost:5173',
     'https://imagi-frr9.vercel.app',
-    'https://imagi.vercel.app'
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -35,11 +34,9 @@ app.get('/', (req, res) => {
   res.send('Server is running');
 });
 
-// For local development
-if (process.env.NODE_ENV !== 'production') {
-  app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-  });
-}
+// Start server for both local development and production (Render)
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
 
 export default app;
